@@ -30,6 +30,7 @@ switch (DevENVArgs[0]) {
     Stdoutprint.code("HSIDevEnvCode", "// %APPLICATIONDIR% is not apart of the code and is to be replaced of where devset.js is stored. %FUNCTION% is the name of the function you wish to call.\nvar DevENV = require(%APPLICATIONDIR%/devset.js)\nDevENV.%FUNCTION%()\n")
     break;
   case "DownloadMinfifed":
+    const childprocess = require("child_process")
     console.clear()
     Stdoutprint.warn("HSIDevEnvWarning", "███████████████████████████████")
     Stdoutprint.warn("HSIDevEnvWarning", "█---------- WARNING ----------█▒")
