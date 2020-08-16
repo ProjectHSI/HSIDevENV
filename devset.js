@@ -29,6 +29,43 @@ switch (DevENVArgs[0]) {
     Stdoutprint.notice("HSIDevEnvNotice", "To use this software under a program enter this code into your application:")
     Stdoutprint.code("HSIDevEnvCode", "// %APPLICATIONDIR% is not apart of the code and is to be replaced of where devset.js is stored. %FUNCTION% is the name of the function you wish to call.\nvar DevENV = require(%APPLICATIONDIR%/devset.js)\nDevENV.%FUNCTION%()\n")
     break;
+  case "DownloadMinfifed":
+    console.clear()
+    Stdoutprint.warn("HSIDevEnvWarning", "███████████████████████████████")
+    Stdoutprint.warn("HSIDevEnvWarning", "█---------- WARNING ----------█▒")
+    Stdoutprint.warn("HSIDevEnvWarning", "█                             █▒")
+    Stdoutprint.warn("HSIDevEnvWarning", "█ ARE YOU SURE?               █▒")
+    Stdoutprint.warn("HSIDevEnvWarning", "█                             █▒")
+    Stdoutprint.warn("HSIDevEnvWarning", "█ This replaces the startup   █▒")
+    Stdoutprint.warn("HSIDevEnvWarning", "█ file and launches the min-  █▒")
+    Stdoutprint.warn("HSIDevEnvWarning", "█ ifed file instead.          █▒")
+    Stdoutprint.warn("HSIDevEnvWarning", "█                             █▒")
+    Stdoutprint.warn("HSIDevEnvWarning", "█ Answer Y to continue.       █▒")
+    Stdoutprint.warn("HSIDevEnvWarning", "█                             █▒")
+    Stdoutprint.warn("HSIDevEnvWarning", "███████████████████████████████▒")
+    Stdoutprint.warn("HSIDevEnvWarning", " ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒")
+    const readline = require('readline');
+
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
+
+    rl.question('ARE YOU SURE YOU WISH TO CONTINUE?', (answer) => {
+      if (answer == "y") {
+        fs.writeFileSync("./package.json", `{\n"name": "devinform",\n"version": "0.0.1",\n"description": "",\n"main": "devset.js",\n"scripts": {\n"test": "node devset.js --test"\n},\n"author": "[Project HSI]",\n"license": "UNLICENSED",\n"dependencies": {\n"discord.js": "^11.6.4",\n"npmlog": "^4.1.2"\n}\n}`)
+        const client = childprocess.spawn('pwsh.exe', ['/c', 'minifdownload.ps1'])
+        client.stdout.on('data', (data) => {
+          Stdoutprint.info("Stdout of Client", data.toString());
+        });
+        client.stderr.on('data', (data) => {
+          Stdoutprint.error("Stderr of Client", data.toString());
+        });
+      }
+
+    rl.close();
+});
+    break;
   case "LaunchBOTClient":
     console.clear()
     Stdoutprint.info("HSIDevEnvLauncher", "██████████████████████████████████████████████████████████████████")

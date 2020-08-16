@@ -28,7 +28,7 @@ module.exports = {
         Stdoutprint.error("Stderr of Client", data.toString());
       });
       Stdoutprint.info("Bootstraper", `Launched client.`)
-    clientelec.on('exit', (code) => {
+    client.on('exit', (code) => {
       log.notice("Bootstraper", "Exiting.")
       if (code != 0) {
         log.error("Bootstraper", "Bootstraper determined an error caused the process to exit.")
