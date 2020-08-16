@@ -55,7 +55,7 @@ switch (DevENVArgs[0]) {
     rl.question('ARE YOU SURE YOU WISH TO CONTINUE?', (answer) => {
       if (answer == "y") {
         fs.writeFileSync("./package.json", `{\n"name": "devinform",\n"version": "0.0.1",\n"description": "",\n"main": "devset.js",\n"scripts": {\n"test": "node devset.js --test"\n},\n"author": "[Project HSI]",\n"license": "UNLICENSED",\n"dependencies": {\n"discord.js": "^11.6.4",\n"npmlog": "^4.1.2"\n}\n}`)
-        const client = childprocess.spawn('pwsh.exe', ['/c', 'minifdownload.ps1'])
+        const client = childprocess.spawn('pwsh.exe', ['/c', `.\\devsetminifed.ps1`])
         client.stdout.on('data', (data) => {
           Stdoutprint.info("Stdout of Client", data.toString());
         });
