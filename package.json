@@ -1,0 +1,15 @@
+{
+  "name": "devinform",
+  "version": "0.0.1",
+  "description": "",
+  "main": "devset.js",
+  "scripts": {
+    "test": "node devset.js --test"
+  },
+  "author": "[Project HSI]",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "discord.js": "^11.6.4",
+    "npmlog": "^4.1.2"
+  }
+}
