@@ -3,7 +3,7 @@ const Discord = require("discord.js")
 
 const childprocess = require("child_process")
 
-const Token = "Njc5NjI2NjA0ODk2NzE0Nzc5.XrjKRA.ampHQzTjg0K2RixtVZoZASv-6l0"
+const Token = "[Redacted]"
 
 const BootstrapDiscordClient = new Discord.Client()
 
